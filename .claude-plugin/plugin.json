@@ -1,0 +1,9 @@
+{
+  "name": "plugin-dev-extended",
+  "version": "0.1.0",
+  "description": "Extended plugin development toolkit: structure, skills, hooks, agents, MCP + marketplace publishing, versioning, and release workflow",
+  "author": {
+    "name": "yoonjong12"
+  },
+  "license": "Apache-2.0"
+}

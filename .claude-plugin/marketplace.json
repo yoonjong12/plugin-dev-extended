@@ -1,0 +1,13 @@
+{
+  "name": "plugin-dev-extended-marketplace",
+  "owner": {
+    "name": "yoonjong12"
+  },
+  "plugins": [
+    {
+      "name": "plugin-dev-extended",
+      "source": "./",
+      "description": "Extended plugin development toolkit: structure, skills, hooks, agents, MCP + marketplace publishing, versioning, and release workflow"
+    }
+  ]
+}
