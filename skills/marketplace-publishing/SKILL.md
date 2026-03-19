@@ -127,6 +127,12 @@ When releasing a new version:
 2. Bump version in `plugin.json` (the single source of truth)
 3. Commit and push
 4. Optionally tag: `git tag v0.3.0 && git push --tags`
+5. **CRITICAL — Sync the local marketplace shallow clone**:
+   ```bash
+   cd ~/.claude/plugins/marketplaces/{marketplace-name} && git pull origin main
+   ```
+   Without this, `/plugin update` compares against the stale local clone and reports "already at latest version" even after pushing. This is the #1 cause of "update not detected" issues for plugin developers.
+6. Run `/plugin update my-plugin@my-marketplace` to verify
 
 Users update via:
 - `/plugin update my-plugin` (manual)
@@ -156,8 +162,15 @@ Each branch's `plugin.json` must have a different version.
 
 ### Update not detected after version bump
 
-**Cause**: Version set in both `marketplace.json` and `plugin.json`, or shallow clone not pulling.
-**Fix**: Remove version from `marketplace.json`, keep only in `plugin.json`. User may need to `/plugin marketplace add` again to refresh.
+**Cause**: The local marketplace shallow clone at `~/.claude/plugins/marketplaces/{name}/` is stale. `/plugin update` compares the cached version against this LOCAL clone, not the remote. If you don't `git pull` the clone, it still has the old `plugin.json` version.
+
+**Fix**:
+```bash
+cd ~/.claude/plugins/marketplaces/{marketplace-name} && git pull origin main
+/plugin update my-plugin@my-marketplace
+```
+
+Secondary cause: Version set in both `marketplace.json` and `plugin.json`. Fix: keep version only in `plugin.json`.
 
 ### Plugin commands not appearing after install
 
@@ -181,8 +194,7 @@ git push origin main
 # Releasing
 # 1. bump .claude-plugin/plugin.json version
 # 2. git commit && git push
-# 3. optionally: git tag v0.3.0 && git push --tags
-
-# User updates
-/plugin update my-plugin
+# 3. cd ~/.claude/plugins/marketplaces/{name} && git pull  ← MUST DO
+# 4. /plugin update my-plugin@my-marketplace               ← verify
+# 5. optionally: git tag v0.3.0 && git push --tags
 ```
