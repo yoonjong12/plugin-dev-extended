@@ -76,6 +76,7 @@ If both declare version, `plugin.json` wins silently — the marketplace version
 ~/.claude/plugins/
   marketplaces/{marketplace-name}/    # shallow git clone of marketplace repo
   cache/{marketplace-name}/{plugin-name}/{version}/  # installed snapshot
+  installed_plugins.json              # version registry — maps plugin to installPath + version
 ```
 
 1. `/plugin update` fetches the marketplace repo
@@ -83,6 +84,8 @@ If both declare version, `plugin.json` wins silently — the marketplace version
 3. If different, copies new version to `cache/{name}/{new-version}/`
 
 **Critical**: If you change code without bumping version, users never see the update. The cache directory is keyed by version string.
+
+**Critical**: `installed_plugins.json` is the actual version registry. The plugin system reads `installPath` from this file to locate which cache directory to load. If the cache is updated but `installed_plugins.json` still points to the old version, the old code is loaded.
 
 ### Semantic Versioning
 
@@ -132,7 +135,13 @@ When releasing a new version:
    cd ~/.claude/plugins/marketplaces/{marketplace-name} && git pull origin main
    ```
    Without this, `/plugin update` compares against the stale local clone and reports "already at latest version" even after pushing. This is the #1 cause of "update not detected" issues for plugin developers.
-6. Run `/plugin update my-plugin@my-marketplace` to verify
+6. **CRITICAL — Update `installed_plugins.json`**:
+   After creating the new cache directory, update `~/.claude/plugins/installed_plugins.json` to point to the new version:
+   - `installPath` → new cache path (e.g. `.../cache/{marketplace}/{plugin}/{new-version}`)
+   - `version` → new version string
+   Without this, the plugin system continues loading the old cached version.
+7. Run `/plugin update my-plugin@my-marketplace` to verify
+8. Run `/reload-plugins` to load the updated version
 
 Users update via:
 - `/plugin update my-plugin` (manual)
@@ -172,6 +181,17 @@ cd ~/.claude/plugins/marketplaces/{marketplace-name} && git pull origin main
 
 Secondary cause: Version set in both `marketplace.json` and `plugin.json`. Fix: keep version only in `plugin.json`.
 
+### Cache updated but old version still loads
+
+**Cause**: `~/.claude/plugins/installed_plugins.json` still has old `installPath` and `version` pointing to the previous cache directory.
+**Fix**:
+```bash
+# Check current installPath
+cat ~/.claude/plugins/installed_plugins.json | grep -A3 "my-plugin@my-marketplace"
+# Update installPath and version to match the new cache directory
+```
+Edit `installed_plugins.json` to set `installPath` to the new cache path and `version` to the new version string. Then `/reload-plugins`.
+
 ### Plugin commands not appearing after install
 
 **Cause**: Commands directory not at plugin root, or plugin.json missing/invalid.
@@ -194,7 +214,9 @@ git push origin main
 # Releasing
 # 1. bump .claude-plugin/plugin.json version
 # 2. git commit && git push
-# 3. cd ~/.claude/plugins/marketplaces/{name} && git pull  ← MUST DO
-# 4. /plugin update my-plugin@my-marketplace               ← verify
-# 5. optionally: git tag v0.3.0 && git push --tags
+# 3. cd ~/.claude/plugins/marketplaces/{name} && git pull       ← MUST DO
+# 4. update installed_plugins.json installPath + version        ← MUST DO
+# 5. /plugin update my-plugin@my-marketplace                    ← verify
+# 6. /reload-plugins
+# 7. optionally: git tag v0.3.0 && git push --tags
 ```
