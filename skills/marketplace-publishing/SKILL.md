@@ -127,7 +127,8 @@ git push -u origin main
 When releasing a new version:
 
 1. Make your code changes
-2. Bump version in `plugin.json` (the single source of truth)
+2. **CRITICAL — Bump version in `plugin.json`** (the single source of truth).
+   The cache directory is keyed by version string. If you change code without bumping, no user (including yourself) will see the update. Always bump before commit.
 3. Commit and push
 4. Optionally tag: `git tag v0.3.0 && git push --tags`
 5. **CRITICAL — Sync the local marketplace shallow clone**:
@@ -140,7 +141,16 @@ When releasing a new version:
    - `installPath` → new cache path (e.g. `.../cache/{marketplace}/{plugin}/{new-version}`)
    - `version` → new version string
    Without this, the plugin system continues loading the old cached version.
-7. Run `/plugin update my-plugin@my-marketplace` to verify
+7. **Verify all three layers match**:
+   ```bash
+   # marketplace source version
+   jq -r .version ~/.claude/plugins/marketplaces/{marketplace-name}/.claude-plugin/plugin.json
+   # cache version
+   jq -r .version ~/.claude/plugins/cache/{marketplace-name}/{plugin-name}/{new-version}/.claude-plugin/plugin.json
+   # installed_plugins.json version
+   python3 -c "import json; d=json.load(open('$HOME/.claude/plugins/installed_plugins.json')); print(d['plugins']['{plugin-name}@{marketplace-name}'][0]['version'])"
+   ```
+   All three must show the same new version. If any is stale, the update is incomplete.
 8. Run `/reload-plugins` to load the updated version
 
 Users update via:
