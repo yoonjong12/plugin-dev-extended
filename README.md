@@ -195,16 +195,9 @@ Use this workflow for structured, high-quality plugin development from concept t
 
 ## Installation
 
-Install from claude-code-marketplace:
-
-```bash
-/plugin install plugin-dev@claude-code-marketplace
 ```
-
-Or for development, use directly:
-
-```bash
-cc --plugin-dir /path/to/plugin-dev
+/plugin marketplace add yoonjong12/plugin-dev-extended
+/plugin install plugin-dev-extended@plugin-dev-extended-marketplace
 ```
 
 ## Quick Start
