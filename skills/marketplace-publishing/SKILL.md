@@ -32,8 +32,8 @@ For single-plugin repos (plugin = marketplace), everything lives in one repo.
 
 ```json
 {
-  "name": "my-marketplace",
-  "owner": { "name": "author-name" },
+  "name": "my-plugin",
+  "owner": { "name": "github-username" },
   "plugins": [
     {
       "name": "my-plugin",
@@ -43,6 +43,8 @@ For single-plugin repos (plugin = marketplace), everything lives in one repo.
   ]
 }
 ```
+
+**The `name` field determines the `@` identifier in install commands.** For single-plugin repos, use the same name as the plugin (e.g. `"name": "my-plugin"` → users install with `my-plugin@my-plugin`).
 
 **Reserved names**: `claude-code-marketplace`, `claude-code-plugins`, `claude-plugins-official`, `anthropic-marketplace`, `anthropic-plugins`, `agent-skills`
 
@@ -115,11 +117,28 @@ git remote add origin git@github.com:user/my-plugin.git
 git push -u origin main
 ```
 
-### Step 3: Users install
+### Step 3: Update README with install instructions
 
-```bash
-/plugin marketplace add user/my-plugin
-/plugin install my-plugin@my-marketplace
+The plugin README **must** include the two-step install flow. Users only have Claude Code and a GitHub link — they need exact commands:
+
+```markdown
+## Install
+
+\`\`\`
+/plugin marketplace add github-username/my-plugin
+/plugin install my-plugin@my-plugin
+\`\`\`
+```
+
+The `@my-plugin` part is the `name` field from `marketplace.json`, NOT the GitHub username.
+
+### Step 4: Users install
+
+Users run exactly what the README says:
+
+```
+/plugin marketplace add github-username/my-plugin
+/plugin install my-plugin@my-plugin
 ```
 
 ## Release Workflow
@@ -215,8 +234,8 @@ claude --plugin-dir ./my-plugin
 /reload-plugins
 
 # Testing install flow
-/plugin marketplace add ./my-marketplace
-/plugin install my-plugin@my-marketplace
+/plugin marketplace add github-username/my-plugin
+/plugin install my-plugin@my-plugin
 
 # Publishing
 git push origin main
