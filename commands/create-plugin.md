@@ -147,7 +147,7 @@ Guide the user through creating a complete, high-quality Claude Code plugin from
    mkdir -p plugin-name/hooks                 # if needed
    # Note: plugin-name/commands/ is a legacy alternative to skills/ — prefer skills/
    ```
-4. Create plugin.json manifest using Write tool:
+4. Create `.claude-plugin/plugin.json` manifest using Write tool:
    ```json
    {
      "name": "plugin-name",
@@ -159,9 +159,25 @@ Guide the user through creating a complete, high-quality Claude Code plugin from
      }
    }
    ```
-5. Create README.md template
-6. Create .gitignore if needed (for .claude/\*.local.md, etc.)
-7. Initialize git repo if creating new directory
+5. Create `.claude-plugin/marketplace.json` for marketplace discovery:
+   ```json
+   {
+     "name": "plugin-name",
+     "owner": {
+       "name": "[github username]"
+     },
+     "plugins": [
+       {
+         "name": "plugin-name",
+         "source": "./",
+         "description": "[brief description]"
+       }
+     ]
+   }
+   ```
+6. Create README.md template
+7. Create .gitignore if needed (for .claude/\*.local.md, etc.)
+8. Initialize git repo if creating new directory
 
 **Output**: Plugin directory structure created and ready for components
 
