@@ -1,6 +1,6 @@
 ---
 name: command-development
-description: This skill should be used when the user asks to "create a slash command", "add a command", "write a custom command", "define command arguments", "use command frontmatter", "organize commands", "create command with file references", "interactive command", "use AskUserQuestion in command", or needs guidance on slash command structure, YAML frontmatter fields, dynamic arguments, bash execution in commands, user interaction patterns, or command development best practices for Claude Code.
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 version: 0.2.0
 ---
 
@@ -113,7 +113,7 @@ Add configuration using YAML frontmatter:
 
 ```markdown
 ---
-description: Review code for security issues
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 allowed-tools: Read, Grep, Bash(git:*)
 model: sonnet
 ---
@@ -131,7 +131,7 @@ Review this code for security vulnerabilities...
 
 ```yaml
 ---
-description: Review pull request for code quality
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 ---
 ```
 
@@ -215,7 +215,7 @@ Capture all arguments as single string:
 
 ```markdown
 ---
-description: Fix issue by number
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 argument-hint: [issue-number]
 ---
 
@@ -242,7 +242,7 @@ Capture individual arguments with `$1`, `$2`, `$3`, etc.:
 
 ```markdown
 ---
-description: Review PR with priority and assignee
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 argument-hint: [pr-number] [priority] [assignee]
 ---
 
@@ -291,7 +291,7 @@ Include file contents in command:
 
 ```markdown
 ---
-description: Review specific file
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 argument-hint: [file-path]
 ---
 
@@ -445,7 +445,7 @@ Please provide a PR number. Usage: /review-pr [number]
 
 ```markdown
 ---
-description: Deploy application to environment
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 argument-hint: [environment] [version]
 ---
 
@@ -464,7 +464,7 @@ Deploy application to $1 environment using version $2...
 
 ```markdown
 ---
-description: Review code changes
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 allowed-tools: Read, Bash(git:*)
 ---
 
@@ -484,7 +484,7 @@ Provide specific feedback for each file.
 
 ```markdown
 ---
-description: Run tests for specific file
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 argument-hint: [test-file]
 allowed-tools: Bash(npm:*)
 ---
@@ -498,7 +498,7 @@ Analyze results and suggest fixes for failures.
 
 ```markdown
 ---
-description: Generate documentation for file
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 argument-hint: [source-file]
 ---
 
@@ -515,7 +515,7 @@ Generate comprehensive documentation for @$1 including:
 
 ```markdown
 ---
-description: Complete PR workflow
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 argument-hint: [pr-number]
 allowed-tools: Bash(gh:*), Read
 ---
@@ -574,7 +574,7 @@ Plugin commands have access to `${CLAUDE_PLUGIN_ROOT}`, an environment variable 
 
 ```markdown
 ---
-description: Analyze using plugin script
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 allowed-tools: Bash(node:*)
 ---
 
@@ -644,7 +644,7 @@ plugin-name/
 
 ```markdown
 ---
-description: Deploy using plugin configuration
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 argument-hint: [environment]
 allowed-tools: Read, Bash(*)
 ---
@@ -659,7 +659,7 @@ Monitor deployment and report status.
 
 ```markdown
 ---
-description: Generate docs from template
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 argument-hint: [component]
 ---
 
@@ -672,7 +672,7 @@ Generate documentation for $1 following template structure.
 
 ```markdown
 ---
-description: Complete build workflow
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 allowed-tools: Bash(*)
 ---
 
@@ -695,7 +695,7 @@ Launch plugin agents for complex tasks:
 
 ```markdown
 ---
-description: Deep code review
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 argument-hint: [file-path]
 ---
 
@@ -727,7 +727,7 @@ Leverage plugin skills for specialized knowledge:
 
 ```markdown
 ---
-description: Document API with standards
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 argument-hint: [api-file]
 ---
 
@@ -767,7 +767,7 @@ Combine agents, skills, and scripts:
 
 ```markdown
 ---
-description: Comprehensive review workflow
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 argument-hint: [file]
 allowed-tools: Bash(node:*), Read
 ---
@@ -804,7 +804,7 @@ Commands should validate inputs and resources before processing.
 
 ```markdown
 ---
-description: Deploy with validation
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 argument-hint: [environment]
 ---
 
@@ -821,7 +821,7 @@ Show usage: /deploy [environment]
 
 ```markdown
 ---
-description: Process configuration
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 argument-hint: [config-file]
 ---
 
@@ -839,7 +839,7 @@ Provide example configuration
 
 ```markdown
 ---
-description: Run plugin analyzer
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 allowed-tools: Bash(test:*)
 ---
 
@@ -856,7 +856,7 @@ Otherwise, report missing components.
 
 ```markdown
 ---
-description: Build with error handling
+description: "Create slash commands in plugin. Trigger: 'create command', 'add command', 'slash command', 'command frontmatter'"
 allowed-tools: Bash(*)
 ---
 

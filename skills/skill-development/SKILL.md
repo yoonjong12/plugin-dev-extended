@@ -1,6 +1,6 @@
 ---
 name: skill-development
-description: This skill should be used when the user wants to "create a skill", "add a skill to plugin", "write a new skill", "improve skill description", "organize skill content", or needs guidance on skill structure, progressive disclosure, or skill development best practices for Claude Code plugins.
+description: "Create/improve SKILL.md in plugin. Trigger: 'create skill', 'add skill', 'write skill', 'skill structure'"
 version: 0.1.0
 ---
 
@@ -164,23 +164,17 @@ Also, delete any example files and directories not needed for the skill. Create 
 ```yaml
 ---
 name: Skill Name
-description: This skill should be used when the user asks to "specific phrase 1", "specific phrase 2", "specific phrase 3". Include exact phrases users would say that should trigger this skill. Be concrete and specific.
+description: "Create/improve SKILL.md in plugin. Trigger: 'create skill', 'add skill', 'write skill', 'skill structure'"
 version: 0.1.0
 ---
 ```
 
 **Good description examples:**
 ```yaml
-description: This skill should be used when the user asks to "create a hook", "add a PreToolUse hook", "validate tool use", "implement prompt-based hooks", or mentions hook events (PreToolUse, PostToolUse, Stop).
-```
-
-**Bad description examples:**
-```yaml
-description: Use this skill when working with hooks.  # Wrong person, vague
-description: Load when user needs hook help.  # Not third person
-description: Provides hook guidance.  # No trigger phrases
-```
-
+description: "Create/improve SKILL.md in plugin. Trigger: 'create skill', 'add skill', 'write skill', 'skill structure'"
+description: "Create/improve SKILL.md in plugin. Trigger: 'create skill', 'add skill', 'write skill', 'skill structure'"
+description: "Create/improve SKILL.md in plugin. Trigger: 'create skill', 'add skill', 'write skill', 'skill structure'"
+description: "Create/improve SKILL.md in plugin. Trigger: 'create skill', 'add skill', 'write skill', 'skill structure'"
 To complete SKILL.md body, answer the following questions:
 
 1. What is the purpose of the skill, in a few sentences?
@@ -385,17 +379,9 @@ The frontmatter description must use third person:
 
 **Correct:**
 ```yaml
-description: This skill should be used when the user asks to "create X", "configure Y"...
-```
-
-**Incorrect:**
-```yaml
-description: Use this skill when you want to create X...
-description: Load this skill when user asks...
-```
-
-### Objective, Instructional Language
-
+description: "Create/improve SKILL.md in plugin. Trigger: 'create skill', 'add skill', 'write skill', 'skill structure'"
+description: "Create/improve SKILL.md in plugin. Trigger: 'create skill', 'add skill', 'write skill', 'skill structure'"
+description: "Create/improve SKILL.md in plugin. Trigger: 'create skill', 'add skill', 'write skill', 'skill structure'"
 Focus on what to do, not who should do it:
 
 **Correct:**
@@ -454,22 +440,8 @@ Before finalizing a skill:
 
 ❌ **Bad:**
 ```yaml
-description: Provides guidance for working with hooks.
-```
-
-**Why bad:** Vague, no specific trigger phrases, not third person
-
-✅ **Good:**
-```yaml
-description: This skill should be used when the user asks to "create a hook", "add a PreToolUse hook", "validate tool use", or mentions hook events. Provides comprehensive hooks API guidance.
-```
-
-**Why good:** Third person, specific phrases, concrete scenarios
-
-### Mistake 2: Too Much in SKILL.md
-
-❌ **Bad:**
-```
+description: "Create/improve SKILL.md in plugin. Trigger: 'create skill', 'add skill', 'write skill', 'skill structure'"
+description: "Create/improve SKILL.md in plugin. Trigger: 'create skill', 'add skill', 'write skill', 'skill structure'"
 skill-name/
 └── SKILL.md  (8,000 words - everything in one file)
 ```

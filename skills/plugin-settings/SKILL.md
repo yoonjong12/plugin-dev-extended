@@ -1,6 +1,6 @@
 ---
 name: plugin-settings
-description: This skill should be used when the user asks about "plugin settings", "store plugin configuration", "user-configurable plugin", ".local.md files", "plugin state files", "read YAML frontmatter", "per-project plugin settings", or wants to make plugin behavior configurable. Documents the .claude/plugin-name.local.md pattern for storing plugin-specific configuration with YAML frontmatter and markdown content.
+description: "Plugin config via .local.md. Trigger: 'plugin settings', 'plugin config', 'store plugin state', '.local.md'"
 version: 0.1.0
 ---
 
@@ -102,7 +102,7 @@ Commands can read settings files to customize behavior:
 
 ```markdown
 ---
-description: Process data with plugin
+description: "Plugin config via .local.md. Trigger: 'plugin settings', 'plugin config', 'store plugin state', '.local.md'"
 allowed-tools: ["Read", "Bash"]
 ---
 
@@ -123,7 +123,7 @@ Agents can reference settings in their instructions:
 ```markdown
 ---
 name: configured-agent
-description: Agent that adapts to project settings
+description: "Plugin config via .local.md. Trigger: 'plugin settings', 'plugin config', 'store plugin state', '.local.md'"
 ---
 
 Check for plugin settings at `.claude/my-plugin.local.md`.

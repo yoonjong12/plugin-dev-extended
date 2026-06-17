@@ -1,6 +1,6 @@
 ---
 name: optimize-skills
-description: This skill should be used when the user says "optimize plugin tokens", "reduce token usage in skills", "scriptify skills", "extract boilerplate into scripts", "reduce LLM overhead in plugin", or wants to move repetitive state management / path resolution out of SKILL.md into shell scripts.
+description: "Extract scripts from SKILL.md boilerplate. Trigger: 'optimize plugin tokens', 'reduce token usage', 'scriptify', 'extract boilerplate'"
 version: 0.1.0
 ---
 

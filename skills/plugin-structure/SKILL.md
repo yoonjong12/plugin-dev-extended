@@ -1,6 +1,6 @@
 ---
 name: plugin-structure
-description: This skill should be used when the user asks to "create a plugin", "scaffold a plugin", "understand plugin structure", "organize plugin components", "set up plugin.json", "use ${CLAUDE_PLUGIN_ROOT}", "add commands/agents/skills/hooks", "configure auto-discovery", or needs guidance on plugin directory layout, manifest configuration, component organization, file naming conventions, or Claude Code plugin architecture best practices.
+description: "Scaffold plugin structure. Trigger: 'create plugin', 'plugin structure', 'plugin.json', 'scaffold plugin'"
 version: 0.1.0
 ---
 
@@ -125,7 +125,7 @@ commands/
 ```markdown
 ---
 name: command-name
-description: Command description
+description: "Scaffold plugin structure. Trigger: 'create plugin', 'plugin structure', 'plugin.json', 'scaffold plugin'"
 ---
 
 Command implementation instructions...
@@ -150,7 +150,7 @@ agents/
 **File format**:
 ```markdown
 ---
-description: Agent role and expertise
+description: "Scaffold plugin structure. Trigger: 'create plugin', 'plugin structure', 'plugin.json', 'scaffold plugin'"
 capabilities:
   - Specific task 1
   - Specific task 2
@@ -186,7 +186,7 @@ skills/
 ```markdown
 ---
 name: Skill Name
-description: When to use this skill
+description: "Scaffold plugin structure. Trigger: 'create plugin', 'plugin structure', 'plugin.json', 'scaffold plugin'"
 version: 1.0.0
 ---
 

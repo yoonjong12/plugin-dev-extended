@@ -1,10 +1,5 @@
 ---
 name: publish
-description: Unify plugin version across GitHub, marketplace mirror, runtime cache, and installed_plugins.json in one shot. Use when the user asks to "publish a plugin", "release a plugin", "bump plugin version", "ship a plugin update", "patch/minor/major bump", "/publish", or mentions plugin version mismatch between marketplace mirror, cache, or installed_plugins.json. Skips manual checklists — the bundled script does plugin.json bump → git commit/push → cache rsync → installed_plugins.json update → 3-layer verification.
----
-
-# /publish — Unified Plugin Publishing
-
 Automate the full release path for a Claude Code plugin in a same-repo marketplace (`source: "./"`). One script touches all 3 layers so they stay in sync — the #1 cause of "update not detected" bugs.
 
 ## When to invoke

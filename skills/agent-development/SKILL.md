@@ -1,6 +1,6 @@
 ---
 name: agent-development
-description: This skill should be used when the user asks to "create an agent", "add an agent", "write a subagent", "agent frontmatter", "when to use description", "agent examples", "agent tools", "agent colors", "autonomous agent", or needs guidance on agent structure, system prompts, triggering conditions, or agent development best practices for Claude Code plugins.
+description: "Create/add agent in plugin. Trigger: 'create agent', 'add agent', 'subagent', 'agent frontmatter', 'agent tools'"
 version: 0.1.0
 ---
 
@@ -24,9 +24,7 @@ Agents are autonomous subprocesses that handle complex, multi-step tasks indepen
 ```markdown
 ---
 name: agent-identifier
-description: Use this agent when [triggering conditions]. Examples:
-
-<example>
+description: "Create/add agent in plugin. Trigger: 'create agent', 'add agent', 'subagent', 'agent frontmatter', 'agent tools'"
 Context: [Situation description]
 user: "[User request]"
 assistant: "[How assistant should respond and use this agent]"
@@ -332,7 +330,7 @@ Ensure system prompt is complete:
 ```markdown
 ---
 name: simple-agent
-description: Use this agent when... Examples: <example>...</example>
+description: "Create/add agent in plugin. Trigger: 'create agent', 'add agent', 'subagent', 'agent frontmatter', 'agent tools'"
 model: inherit
 color: blue
 ---
